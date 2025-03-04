@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrakingState : MonoBehaviour
+public class BrakingState : ICarState
 {
-    // Start is called before the first frame update
-    void Start()
+    public void EnterState(CarStateMachine state)
     {
-        
+   
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ExiteState(CarStateMachine state)
     {
-        
+   
+    }
+
+    public void FixedUpdateState(CarStateMachine car)
+    {
+ 
+    }
+
+    public void UpdateState(CarStateMachine state)
+    {
+ 
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface ICarState
 {
-    void EnterState(CarController car);
-    void FixedUpdateState(CarController car);
-    void UpdateState(CarController car);
+    void EnterState(CarStateMachine state);
+    void FixedUpdateState(CarStateMachine car);
+    void UpdateState(CarStateMachine state);
 
-    void ExiteState(CarController car);
+    void ExiteState(CarStateMachine state);
 }
