@@ -2,12 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "SO/CarInput", menuName = "SO/CarInput")]
-public class SOCarInput : MonoBehaviour, Controls.ICarActions
+[CreateAssetMenu(fileName = "SO/CarInput", menuName = "SOCarInput")]
+public class SOCarInput : ScriptableObject, Controls.ICarActions
 {
     private Controls _controls;
     private Vector2 direction;
-
     public event Action<Vector2> OnMovement;
     private void OnEnable()
     {
