@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
     private float power;
     private float max_ms_Speed;
 
+    bool hasExecuted = false;
+
     private void Start()
     {
         max_ms_Speed = max_km_Speed * (5f / 18f);
@@ -29,24 +31,26 @@ public class Movement : MonoBehaviour
     private void GetSpeed()
     {
         Vector2 vector = direction;
-        if (vector.magnitude != 0)
+        if (vector.magnitude != 0&&!hasExecuted)
         {
+            
             DOTween.To(() => currentSpeed, x => currentSpeed = x, max_ms_Speed, max_Time)
-              .SetEase(Ease.InCubic);
+              .SetEase(Ease.InCubic);//똑같은게 반복 실행
          
         
         }
-        else if (vector.magnitude == 0)
+        else
+        if (vector.magnitude == 0)
         {
-            DOTween.To(() => currentSpeed, x => currentSpeed = x, 0, 2)
+            DOTween.To(() => currentSpeed, x => currentSpeed = x, 0, 3)
            .SetEase(Ease.OutQuad);
-         
+
 
         }
         else if (rigid.velocity.magnitude == 0)
         {
             rigid.velocity = Vector3.zero;
-         
+
         }
 
 
@@ -63,7 +67,7 @@ public class Movement : MonoBehaviour
     {
        
         GetSpeed();
-        checkSpeed = currentSpeed;
+        checkSpeed = currentSpeed*3.6f;
     }
 
     private void FixedUpdate()
@@ -71,5 +75,6 @@ public class Movement : MonoBehaviour
         Calculator_Move();
     }
 
+    
 
 }
